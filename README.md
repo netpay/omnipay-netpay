@@ -35,44 +35,59 @@ $gateway->setCertificateKeyPath($path_to_key);
 $gateway->setCertificatePassword($cert_password);
 ```
 
-Implemented gateway functionalities:
+**Implemented Gateway Functionalities**
 
 Transactions using card data can be done following way:
+```php
 $response = $gateway->purchase(array('amount' => '10.00', 'currency' => 'GBP', 'card' => $card))->send();
 $response = $gateway->authorize(array('amount' => '10.00', 'currency' => 'GBP', 'card' => $card))->send();
+```
 
 You can use following function on any of previous requests to get order id of the payment:
+```php
 $orderId = $response->getOrderId();
 $response = $gateway->capture(array('amount' => '10.00', 'currency' => 'GBP', 'orderId' => $orderId))->send();
 $response = $gateway->refund(array('amount' => '10.00', 'currency' => 'GBP', 'orderId' => $orderId))->send();
+```
 
 You can use following function on any of previous requests to get transaction id of the payment:
+```php
 $transactionId = $response->getTransactionId();
 
 $response = $gateway->retrieveTransaction(array('transactionId' => $transactionId, 'orderId' => $orderId))->send();
 $response = $gateway->void(array('voidTransactionId' => $transactionId, 'orderId' => $orderId))->send();
+```
 
 Transaction id can also be retrieved from capture, refund and void requests.
 
 
-For token transactions following can be used:
+**For token transactions following can be used:**
 
 When saving card, permanent token expires when card expires and temporary one expires one hour after creation
+```php
 $response = $gateway->createCard(array('card' => $card, 'tokenPermanent' => TRUE))->send();
+```
 
 You can retrieve created token from previous request the following way:
+```php
 $token = $response->getToken();
+```
 
 Deletion of saved card
+```php
 $response = $gateway->deleteCard(array('token' => $token))->send();
+```
 
 Retrieve info about stored card
+```php
 $response = $gateway->retrieveCard(array('token' => $token))->send();
+```
 
 Making transactions using saved tokens
+```php
 $response = $gateway->purchase(array('amount' => '10.00', 'currency' => 'GBP', 'token' => $token))->send();
 $response = $gateway->authorize(array('amount' => '10.00', 'currency' => 'GBP', 'token' => $token))->send();
-
+```
 
 Following methods can be used on all requests:
 
