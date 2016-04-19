@@ -9,22 +9,29 @@ $gateway = Omnipay::create('NetPay_Api');
 On gateway you can set the following options:
 
 Allows you to test your code in test environment:
+```php
 $gateway->setTestMode(TRUE);
+```
 
 If your endpoint varies from default you can set it using these functions:
+```php
 $gateway->setLiveEndpoint($liveUrl);
 $gateway->setTestEndpoint($testUrl);
+```
 
 You can set your merchant credentials using functions:
+```php
 $gateway->setMerchantId($merchant_id);
 $gateway->setUsername($username);
 $gateway->setPassword($password);
+```
 
 You can set SSL authentication for connection using functions:
+```php
 $gateway->setCertificatePath($path_to_cert);
 $gateway->setCertificateKeyPath($path_to_key);
 $gateway->setCertificatePassword($cert_password);
-
+```
 
 Implemented gateway functionalities:
 
