@@ -7,16 +7,6 @@ namespace Omnipay\NetPay\Message;
  */
 class ApiVoidRequest extends AbstractRequest
 {
-    public function getTransactionId()
-    {
-        return $this->getParameter('transactionId');
-    }
-
-    public function setTransactionId($value)
-    {
-        return $this->setParameter('transactionId', $value);
-    }
-    
     public function getVoidTransactionId()
     {
         return $this->getParameter('voidTransactionId');
@@ -41,18 +31,18 @@ class ApiVoidRequest extends AbstractRequest
     {
         $this->setApiMethod('gateway/transaction');
         
-        $this->validate('transactionId', 'orderId');
+        $this->validate('voidTransactionId', 'orderId');
 
         $data = $this->getBaseData();
         
         $data['merchant']['operation_type'] = 'VOID';
         
-        $data['transaction']['transaction_id'] = $this->getTransactionId();
+        $data['transaction']['transaction_id'] = $this->createUniqueTransactionId($this->getTransactionId());
         $data['transaction']['void_transaction_id'] = $this->getVoidTransactionId();
         $data['transaction']['source'] = 'INTERNET';
         $description = trim(substr($this->getDescription(), 0, 100));
         if(strlen($description) === 0) {
-            $description = substr("Void of transaction id ".$this->getTransactionId()." has been requested.", 0, 100);
+            $description = substr("Void of transaction id ".$this->getVoidTransactionId()." has been requested.", 0, 100);
         }
         $data['transaction']['description'] = $description;
         

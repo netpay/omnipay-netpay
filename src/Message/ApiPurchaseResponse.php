@@ -14,9 +14,9 @@ class ApiPurchaseResponse extends Response
         parent::__construct($request, $data);
     }
 
-    public function getTransactionReference()
+    public function getTransactionId()
     {
-        return ((isset($this->data['result']) && $this->data['result'] === 'SUCCESS')?$this->data['transaction']['transaction_id']:null);
+        return ((isset($this->data->result) && $this->data->result === 'SUCCESS')?$this->data->transaction->transaction_id:null);
     }
 
     public function getMessage()
