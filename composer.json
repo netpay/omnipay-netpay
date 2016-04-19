@@ -1,5 +1,5 @@
 {
-    "name": "omnipay/netpay",
+    "name": "netpay/omnipay-netpay",
     "type": "library",
     "description": "NetPay Payment Gateway Omnipay plugin",
     "keywords": [
