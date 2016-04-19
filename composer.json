@@ -1,0 +1,36 @@
+{
+    "name": "omnipay/netpay",
+    "type": "library",
+    "description": "NetPay Payment Gateway Omnipay plugin",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "netpay",
+        "purchase"
+    ],
+    "homepage": "https://github.com/netpay/omnipay-netpay",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "NetPay",
+            "homepage": "https://netpay.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\NetPay\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.3.x-dev"
+        }
+    }
+}
