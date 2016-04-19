@@ -1,6 +1,11 @@
 
 # Omnipay : NetPay
 
+[![Latest Stable Version](https://poser.pugx.org/netpay/omnipay-netpay/v/stable)](https://packagist.org/packages/netpay/omnipay-netpay) 
+[![Total Downloads](https://poser.pugx.org/netpay/omnipay-netpay/downloads)](https://packagist.org/packages/netpay/omnipay-netpay) 
+[![Latest Unstable Version](https://poser.pugx.org/netpay/omnipay-netpay/v/unstable)](https://packagist.org/packages/netpay/omnipay-netpay) 
+[![License](https://poser.pugx.org/netpay/omnipay-netpay/license)](https://packagist.org/packages/netpay/omnipay-netpay)
+
 **Gateway Setup**
 
 Basic Gateway Creation Code
