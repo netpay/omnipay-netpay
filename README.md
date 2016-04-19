@@ -2,6 +2,7 @@
 # Omnipay : NetPay
 
 **Gateway Setup**
+
 Basic Gateway Creation Code
 ```php
 $gateway = Omnipay::create('NetPay_Api');
