@@ -7,6 +7,16 @@ namespace Omnipay\NetPay\Message;
  */
 class ApiPurchaseRequest extends AbstractRequest
 {
+    public function getCvv()
+    {
+        return $this->getParameter('cvv');
+    }
+
+    public function setCvv($value)
+    {
+        return $this->setParameter('cvv', $value);
+    }
+    
     public function getData()
     {
         $this->setApiMethod('gateway/transaction');
@@ -31,9 +41,12 @@ class ApiPurchaseRequest extends AbstractRequest
         $customer = array();
         
         if(!is_null($this->getToken())) {
-            $this->validate('token');
+            $this->validate('token', 'cvv');
             $data['payment_source']['type'] = 'TOKEN';
             $data['payment_source']['token'] = $this->getToken();
+            $data['payment_source']['card'] = array(
+                'security_code' => $this->getCvv(),
+            );
         }
         else {
             $this->validate('card');

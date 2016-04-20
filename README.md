@@ -90,8 +90,8 @@ $response = $gateway->retrieveCard(array('token' => $token))->send();
 
 Making transactions using saved tokens
 ```php
-$response = $gateway->purchase(array('amount' => '10.00', 'currency' => 'GBP', 'token' => $token))->send();
-$response = $gateway->authorize(array('amount' => '10.00', 'currency' => 'GBP', 'token' => $token))->send();
+$response = $gateway->purchase(array('amount' => '10.00', 'currency' => 'GBP', 'token' => $token, 'cvv' => $cvv))->send();
+$response = $gateway->authorize(array('amount' => '10.00', 'currency' => 'GBP', 'token' => $token, 'cvv' => $cvv))->send();
 ```
 
 **Following methods can be used on all requests:**
