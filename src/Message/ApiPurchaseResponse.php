@@ -47,6 +47,11 @@ class ApiPurchaseResponse extends Response
         return ((isset($this->data->order) && isset($this->data->order->order_id))?$this->data->order->order_id:null);
     }
     
+    public function getTransactionReference()
+    {
+        return $this->getOrderId();
+    }
+    
     public function getTotalAuthorizedAmount()
     {
         return ((isset($this->data->order) && isset($this->data->order->total_authorized_amount))?$this->data->order->total_authorized_amount:null);
