@@ -596,6 +596,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $bname = 'Unknown';
         $platform = 'Unknown';
         $version= "";
+        $ub = 'Unknown';
 
         //First get the platform?
         if (preg_match('/linux/i', $u_agent)) {
@@ -631,9 +632,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $known = array('Version', $ub, 'other');
         $pattern = '#(?<browser>' . join('|', $known) .
         ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
-        if (!preg_match_all($pattern, $u_agent, $matches)) {
-            // we have no matching number just continue
-        }
+        preg_match_all($pattern, $u_agent, $matches);
 
         // see how many we have
         $i = count($matches['browser']);
@@ -641,12 +640,12 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             //we will have two since we are not using 'other' argument yet
             //see if version is before or after the name
             if (strripos($u_agent,"Version") < strripos($u_agent,$ub)){
-                $version= $matches['version'][0];
+                $version= (isset($matches['version'][0]) ? $matches['version'][0] : null);
             } else {
-                $version= $matches['version'][1];
+                $version= (isset($matches['version'][1]) ? $matches['version'][1] : null);
             }
         } else {
-            $version= $matches['version'][0];
+            $version= (isset($matches['version'][0]) ? $matches['version'][0] : null);
         }
 
         // check if we have a number
